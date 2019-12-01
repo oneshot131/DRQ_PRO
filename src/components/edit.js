@@ -9,84 +9,74 @@ class Edit extends React.Component {
     super(props);
 
     this.state = {Title: '',
-                  Year: '',
+                  _id:'',
                   Poster: '',
-                  _id:''};
+                  Year: '',};
 
 
     this.handleChangeShowTitle = this.handleChangeShowTitle.bind(this);
-    this.handleChangeShowYear = this.handleChangeShowYear.bind(this);
     this.handleChangeShowPoster = this.handleChangeShowPoster.bind(this);
+    this.handleChangeShowYear = this.handleChangeShowYear.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  //-------------------------------------------------
-  //HANDLE CHANGE EVENTS:
-  //-------------------------------------------------
   handleChangeShowTitle(e) {
     this.setState({Title: e.target.value});
   }
 
-  handleChangeShowYear(e) {
+  handleChangeShowPoster(e) {
     this.setState({Year: e.target.value});
   }
 
-  handleChangeShowPoster(e) {
+  handleChangeShowYear(e) {
     this.setState({Poster: e.target.value});
   }
-  //-------------------------------------------------
 
   handleSubmit(e) {
-    alert( 'Tv Show:  ' + this.state.Title + "  "  + this.state.Year + "  " + this.state.Poster);
+    alert( 'Tv Show:  ' + this.state.Title + "  "  + this.state.Poster + "  " + this.state.Year);
     e.preventDefault();
 
     const newShow = {
       title:this.state.Title,
-      year:this.state.Year,
-      poster:this.state.Poster
+      year:this.state.Poster,
+      poster:this.state.Year
     }
 
-    axios.put('http://localhost:4000/api/TvShows/' + this.state._id, newShow) //takes the url of movie we are editing and the body 
+    axios.put('http://localhost:4000/api/TvShows/' + this.state._id, newShow) 
     .then()
     .catch()
 
-    //the following to make the inputs of edit blank after submit button Clicked
     this.setState({Title:'',
-                    Year:'',
                   Poster:'',
+                  Year:'',
                   });
     
   }
 
-  //---------------------------------------------------------
-  //FOR EDIT CHANGE USING ID
 
-  //read the data when u click on component
   componentDidMount(){
- alert(this.props.match.params.id) //passes id as part of the url for edit
-    axios.get('http://localhost:4000/api/TvShows/'+ this.props.match.params.id) //comes back with json in url and update state
+ alert(this.props.match.params.id) 
+    axios.get('http://localhost:4000/api/TvShows/'+ this.props.match.params.id) 
     .then((Response)=>{
       this.setState({
           _id:Response.data._id,
           Title:Response.data.title,
-          Year:Response.data.year,
-          Poster:Response.data.poster
+          Poster:Response.data.poster,
+          Year:Response.data.year
       });
     })
     .catch();
   }
 
-  //---------------------------------------------------------
-  //WHAT U SEE ON PAGE BELOW:
-  //---------------------------------------------------------
-  render() { //visual piece
+
+  render() {
     return (
       <div className="App">
-      <b><h1 style={{color: "red"}}>Type below to edit the Tv Show {this.state.Title}</h1></b>
+      <b><h1 style={{color: "blue"}}>Why not edit a current TV Series{this.state.Title}</h1></b>
       <form onSubmit={this.handleSubmit}>
 
       <div className='form-group'>
-      <b><label style={{color: "red"}}>
+      <b><label style={{color: "blue"}}>
         Tv Show title:
         </label></b>
         <input type="text" 
@@ -95,21 +85,8 @@ class Edit extends React.Component {
          onChange={this.handleChangeShowTitle} />
     </div>
 
-      
-
-      <div className='form-group'>
-      <b><label style={{color: "red"}}>
-        Tv Show Year:
-        </label></b>
-
-        <input type="text" 
-        className= 'form-control'
-        value={this.state.Year}
-         onChange={this.handleChangeShowYear} />
-
-
-      <div className = 'form-group'>
-        <b><label style={{color: "red"}}>
+    <div className = 'form-group'>
+        <b><label style={{color: "blue"}}>
           Tv Show Poster URL:
           </label></b>
           <textarea
@@ -118,10 +95,19 @@ class Edit extends React.Component {
           value={this.state.Poster}
           onChange={this.handleChangeShowPoster}></textarea>
       </div>
-        </div>
-        <input type="submit" value="Submit" />
 
-        
+      <div className='form-group'>
+      <b><label style={{color: "blue"}}>
+        Tv Show Year:
+        </label></b>
+
+        <input type="text" 
+        className= 'form-control'
+        value={this.state.Year}
+         onChange={this.handleChangeShowYear} />
+      </div>
+
+        <input type="submit" value="Submit" />
 
       </form>
       </div>

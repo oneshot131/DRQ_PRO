@@ -20,6 +20,13 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
+        <footer className="foot">
+          <div>
+            <h5>Tv Series </h5>
+            <span>&copy; Tv Series 2019 </span>
+          </div>
+        </footer>
+
         <div className="App">
 
           <Navbar bg="light" variant="primary">
@@ -39,15 +46,7 @@ class App extends React.Component {
             <Route path="/edit/:id" component={Edit} />
             <Route path="/contact" component={Contact} />
           </Switch>
-
         </div>
-
-        <footer className="foot">
-          <div>
-            <h5>Tv Series </h5>
-            <span>&copy; Tv Series 2019 </span>
-          </div>
-        </footer>
       </BrowserRouter>
     );
   }

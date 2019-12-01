@@ -8,11 +8,9 @@ class Read extends React.Component{
     state = {
         tvshows: []
     };
-
     
-
     componentDidMount() {
-        axios.get('http://localhost:4000/api/tvshows') //the servers url which gets the movies api data . not allowed to work untill install cors in server.js
+        axios.get('http://localhost:4000/api/tvshows') 
         .then((response)=> {
             this.setState({tvshows:response.data.tvshows})
         })
@@ -23,7 +21,7 @@ class Read extends React.Component{
     
     render(){
         const mystyle = {
-            color: "Red",
+            color: "blue",
             backgroundColor: "Black",
             padding: "50px",
             fontFamily: "Impact"
@@ -31,7 +29,7 @@ class Read extends React.Component{
 
         return(
             <div style={mystyle} className="App">
-                <h1>Please view some popular TV Shows below</h1>
+                <h1>Check out our hot list!</h1>
                 
                 <TvShows myTvShows={this.state.tvshows}></TvShows>
                 

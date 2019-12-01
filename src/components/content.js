@@ -10,11 +10,21 @@ class Content extends React.Component {
   render() {
     return (
       <div style={{backgroundColor: "lightblue"}} className="App">
-        <h1 style={{color: "red"}}>Welcome to the collection of TV Shows</h1>
+        <h1 style={{color: "blue"}}>TV Series</h1>
 
 
 
 <Carousel>
+  <Carousel.Item>
+  <a href="/create"><img height="600" width="1200"
+      className="d-block w-100"
+      alt="Second slide"
+    /></a>
+
+    <Carousel.Caption>
+      <h3 style={{color: "blue"}}>Why not update the list? </h3>
+    </Carousel.Caption>
+  </Carousel.Item>
   <Carousel.Item>
   <a href="/read"><img height="600"
       className="d-block w-100"
@@ -22,20 +32,10 @@ class Content extends React.Component {
       alt="First slide"
     /></a>
     <Carousel.Caption>
-      <h3 style={{color: "red"}}>See Top TV Shows</h3>
+      <h3 style={{color: "blue"}}>Top?</h3>
     </Carousel.Caption>
   </Carousel.Item>
-  <Carousel.Item>
-  <a href="/create"><img height="600" width="1200"
-      className="d-block w-100"
-      src="https://cdn-static.denofgeek.com/sites/denofgeek/files/styles/main_wide/public/6/65/directors_chair.jpg?itok=MyK46J-X"
-      alt="Second slide"
-    /></a>
 
-    <Carousel.Caption>
-      <h3 style={{color: "red"}}>Add and Edit the list of shows</h3>
-    </Carousel.Caption>
-  </Carousel.Item>
   <Carousel.Item>
   <a href="/contact"><img height="600"
       className="d-block w-100"
@@ -44,7 +44,7 @@ class Content extends React.Component {
     /></a>
 
     <Carousel.Caption>
-      <h3 style={{color: "red"}}>Contact us if any problems</h3>
+      <h3 style={{color: "blue"}}>Dont hesitate to inform us on any probelms :) </h3>
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>

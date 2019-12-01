@@ -6,13 +6,13 @@ class Create extends React.Component {
   constructor(props) {
     super(props);
     this.state = {Title: '',
-                  Year: '',
-                  Poster: ''};
+                  Poster: '',
+                  Year: ''};
 
                   
     this.handleChangeShowTitle = this.handleChangeShowTitle.bind(this);
-    this.handleChangeShowYear = this.handleChangeShowYear.bind(this);
     this.handleChangeShowPoster = this.handleChangeShowPoster.bind(this);
+    this.handleChangeShowYear = this.handleChangeShowYear.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -20,11 +20,11 @@ class Create extends React.Component {
     this.setState({Title: e.target.value});
   }
 
-  handleChangeShowYear(e) {
+  handleChangeShowPoster(e) {
     this.setState({Year: e.target.value});
   }
 
-  handleChangeShowPoster(e) {
+  handleChangeShowYear(e) {
     this.setState({Poster: e.target.value});
   }
 
@@ -33,13 +33,13 @@ class Create extends React.Component {
   //------------------------------------------------------------------------------------------------------
 
   handleSubmit(e) {
-    alert( 'Tv Show:  ' + this.state.Title + "  "  + this.state.Year + "  " + this.state.Poster);
+    alert( 'Tv Show:  ' + this.state.Title + "  "  + this.state.Poster + "  " + this.state.Year);
     e.preventDefault();
 
     const newTvShow = {
       title:this.state.Title,
-      year:this.state.Year,
-      poster:this.state.Poster
+      year:this.state.Poster,
+      poster:this.state.Year
     }
     axios.post('http://localhost:4000/api/tvshows',newTvShow)
     .then(window.location.reload())
@@ -52,12 +52,12 @@ class Create extends React.Component {
   render() {
     return (
       <div className="App">
-        <b><h1 style={{color:"red"}}>Create a new Tv show here</h1></b>
+        <b><h1 style={{color:"blue"}}>PLace your new series here</h1></b>
         <form onSubmit={this.handleSubmit}>
 
         <div className='form-group'>
-        <b><label style={{color:"red"}}>
-          Tv Show title:
+        <b><label style={{color:"blue"}}>
+          Tv Seires title:
           </label></b>
 
           <input type="text" 
@@ -66,10 +66,20 @@ class Create extends React.Component {
            onChange={this.handleChangeShowTitle} />
       </div>
 
-        
+ 
+      <div className = 'form-group'>
+        <b><label style={{color:"blue"}}>
+          Tv Show Poster URL:
+          </label></b>
+          <textarea
+          rows='3'
+          className='form-control'
+          value={this.state.Poster}
+          onChange={this.handleChangeShowPoster}></textarea>
+       </div>
 
         <div className='form-group'>
-        <b><label style={{color:"red"}}>
+        <b><label style={{color:"blue"}}>
           Tv Show Year:
           </label></b>
 
@@ -77,23 +87,10 @@ class Create extends React.Component {
           className= 'form-control'
           value={this.state.Year}
            onChange={this.handleChangeShowYear} />
-
- 
-        <div className = 'form-group'>
-          <b><label style={{color:"red"}}>
-            Tv Show Poster URL:
-            </label></b>
-            <textarea
-            rows='3'
-            className='form-control'
-            value={this.state.Poster}
-            onChange={this.handleChangeShowPoster}></textarea>
         </div>
-          </div>
+
           <input type="submit" value="Submit" />
-
           
-
         </form>
         </div>
     );
