@@ -13,7 +13,7 @@ class Contact extends React.Component {
         <br></br>
         <h3 style={{color: "blue"}}>Phone: 0871234567</h3>
         <h3 style={{color: "blue"}}>Email: example@gmit.ie</h3>
-        <a href ="https://github.com/oneshot131"><h3 style={{color: "blue"}}>Github: https://github.com/SourLeaf</h3></a>
+        <a href ="https://github.com/oneshot131"><h3 style={{color: "blue"}}>Github: https://github.com/oneshot131</h3></a>
         <br></br>
         <h2 style={{color:"blue"}}>Check out our social media:</h2>
         <a href ="https://www.facebook.com/"><h3 style={{color:"blue"}}>Facebook</h3></a>
